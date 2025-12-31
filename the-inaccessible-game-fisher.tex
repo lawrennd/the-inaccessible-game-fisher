@@ -1,0 +1,236 @@
+\documentclass[11pt]{article}
+
+% Standard packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+% Custom commands (aligned with main paper)
+\newcommand{\naturalParameters}{\boldsymbol{\theta}}
+\newcommand{\variables}{\mathbf{x}}
+\newcommand{\cumulantGeneratingFunction}{\psi}
+\newcommand{\constraint}{\mathscr{C}}
+\newcommand{\lagrangian}{\mathscr{L}}
+\newcommand{\gameTime}{\tau}
+
+\newcommand{\tr}{\operatorname{tr}}
+
+% Theorem environments
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+
+\title{Constraint-Induced Reversibility under Natural-Gradient Dynamics}
+\author{Neil D. Lawrence}
+\date{\today}
+
+\maketitle
+
+\begin{abstract}
+In the inaccessible game, constrained maximum entropy production under a Euclidean dissipation geometry leads, upon linearisation, to a GENERIC-like decomposition with both dissipative and reversible components. A natural question is whether the appearance of the antisymmetric (reversible) component is tied to the Euclidean metric choice, or whether it persists under a coordinate-invariant dissipation geometry. In this companion paper we repeat the analysis using the Fisher information metric, yielding natural-gradient entropy ascent. We show that the marginal-entropy conservation constraint continues to induce a GENERIC-like decomposition upon linearisation. The reversible component is therefore not a coordinate artefact of the Euclidean metric. Instead, the dissipation metric controls whether the reversible structure appears canonical or emergent, while the existence of the reversible component itself is determined by constraint geometry.
+\end{abstract}
+
+\section{Introduction}
+
+In \emph{The Inaccessible Game}, we introduced an information-theoretic dynamical system derived from four axioms and an information relaxation principle. Central to the construction is the conservation of total marginal entropy,
+\begin{equation}
+\sum_i h_i = C,
+\end{equation}
+which, when imposed as a constraint on entropy production, yields dynamics exhibiting a GENERIC-like decomposition into dissipative and reversible components.
+
+In that work, dissipation was modelled using a flat (Euclidean) inner product on natural-parameter space. This choice was deliberate: it avoided introducing reversible structure through information geometry alone, allowing antisymmetric dynamics to arise solely through constraint enforcement. However, this raises a natural question: does the reversible component persist under a coordinate-invariant dissipation geometry?
+
+In this companion paper we answer that question by repeating the analysis using the Fisher information metric. Our aim is not to replace the Euclidean formulation, but to separate invariant structural features from metric-dependent interpretation. We show that the GENERIC-like decomposition persists under natural-gradient dynamics, but that the interpretation of the reversible component changes.
+
+\section{Dissipation Geometry and Steepest Ascent}
+
+\subsection{Gradients and metrics}
+
+Let $F(\naturalParameters)$ be a scalar functional on parameter space. The notion of steepest ascent depends on a choice of Riemannian metric $g(\naturalParameters)$. The associated gradient flow is
+\begin{equation}
+\dot{\naturalParameters} = g(\naturalParameters)^{-1}\nabla_{\naturalParameters} F.
+\end{equation}
+
+For exponential family models, two natural choices arise:
+\begin{itemize}[leftmargin=*]
+\item A flat (Euclidean) metric on natural-parameter space.
+\item The Fisher information metric,
+\[
+G(\naturalParameters) = \nabla^2 \cumulantGeneratingFunction(\naturalParameters).
+\]
+\end{itemize}
+
+The latter yields the \emph{natural gradient}, which is invariant under smooth reparameterisation.
+
+\subsection{Natural-gradient entropy ascent}
+
+For an exponential family, the joint entropy has the form
+\begin{equation}
+H(\naturalParameters)
+=
+\cumulantGeneratingFunction(\naturalParameters)
+-
+\naturalParameters^\top \nabla \cumulantGeneratingFunction(\naturalParameters),
+\end{equation}
+and its gradient satisfies
+\begin{equation}
+\nabla_{\naturalParameters} H(\naturalParameters)
+=
+- G(\naturalParameters)\naturalParameters.
+\end{equation}
+
+Under the Fisher information metric, steepest ascent of joint entropy is therefore
+\begin{equation}
+\dot{\naturalParameters}
+=
+G(\naturalParameters)^{-1}\nabla_{\naturalParameters} H
+=
+- \naturalParameters.
+\end{equation}
+
+Unlike the Euclidean case, the natural-gradient flow is globally linear in natural parameters and explicitly coordinate invariant.
+
+\section{Marginal Entropy Conservation under Fisher Geometry}
+
+We impose the same conservation law as in the inaccessible game,
+\begin{equation}
+\constraint(\naturalParameters)
+=
+\sum_i h_i(\naturalParameters)
+=
+C.
+\end{equation}
+
+Let
+\begin{equation}
+\mathbf{a}(\naturalParameters)
+=
+\nabla_{\naturalParameters} \constraint(\naturalParameters)
+\end{equation}
+denote the constraint gradient.
+
+To enforce the constraint under natural-gradient dynamics, we project the flow onto the constraint tangent space using the Fisher-orthogonal projector,
+\begin{equation}
+\Pi_{\parallel,G}
+=
+\mathbf{I}
+-
+G^{-1}\mathbf{a}
+\left(
+\mathbf{a}^\top G^{-1}\mathbf{a}
+\right)^{-1}
+\mathbf{a}^\top.
+\end{equation}
+
+The constrained dynamics are therefore
+\begin{equation}
+\dot{\naturalParameters}
+=
+-
+\Pi_{\parallel,G}\,\naturalParameters.
+\end{equation}
+
+This form mirrors the Euclidean construction, differing only in the dissipation geometry used to define orthogonality.
+
+\section{Linearisation and GENERIC-like Decomposition}
+
+\subsection{Linearisation about an arbitrary point}
+
+Let $\naturalParameters^\ast$ be any point on the constraint manifold, and write
+\[
+\naturalParameters = \naturalParameters^\ast + \mathbf{q}.
+\]
+Linearising the constrained dynamics yields
+\begin{equation}
+\dot{\mathbf{q}} = M_G \mathbf{q},
+\end{equation}
+where
+\begin{equation}
+M_G
+=
+\left.
+\frac{\partial}{\partial \naturalParameters}
+\left(
+-
+\Pi_{\parallel,G}\,\naturalParameters
+\right)
+\right|_{\naturalParameters^\ast}.
+\end{equation}
+
+Because the projector $\Pi_{\parallel,G}$ depends on $\naturalParameters$ through $\mathbf{a}(\naturalParameters)$, the Jacobian $M_G$ is generically non-symmetric.
+
+\subsection{Symmetric--antisymmetric decomposition}
+
+As in the original analysis, the Jacobian decomposes algebraically as
+\begin{equation}
+M_G = S_G + A_G,
+\end{equation}
+with
+\[
+S_G = \tfrac{1}{2}(M_G + M_G^\top),
+\qquad
+A_G = \tfrac{1}{2}(M_G - M_G^\top).
+\]
+
+The symmetric part $S_G$ governs entropy production, while the antisymmetric part $A_G$ generates entropy-neutral motion. Generically, $A_G \neq 0$ unless additional symmetry conditions are satisfied.
+
+Thus, even under natural-gradient dynamics, constrained entropy ascent yields a GENERIC-like local decomposition.
+
+\section{Casimirs, Hamiltonians, and Interpretation}
+
+\subsection{Joint entropy as a Casimir}
+
+The antisymmetric operator satisfies
+\begin{equation}
+A_G \nabla_{\naturalParameters} H = 0,
+\end{equation}
+so joint entropy is conserved by the reversible component of the dynamics. It therefore remains a Casimir of the antisymmetric operator, exactly as in the Euclidean formulation.
+
+\subsection{Marginal entropy as Hamiltonian}
+
+Since
+\[
+\sum_i h_i = H + I,
+\]
+the constraint enforces motion tangent to level sets of total marginal entropy. As a consequence, reversible motion is generated by gradients of multi-information $I$. This interpretation is unchanged by the choice of dissipation metric.
+
+\section{Canonical versus Emergent Reversibility}
+
+The key difference between Euclidean and Fisher formulations is interpretive rather than structural.
+
+Under Euclidean dissipation geometry, reversible structure appears \emph{emergent}: no geometric antisymmetry is assumed, and the antisymmetric component arises solely from constraint enforcement.
+
+Under Fisher geometry, reversible structure appears \emph{canonical}: the dissipation geometry already incorporates information-geometric duality, making reversible motion less surprising.
+
+In both cases, however, the antisymmetric component exists. The dissipation metric controls how it is attributed, while the constraint geometry determines its existence.
+
+\section{Relation to GENERIC and SEA}
+
+This comparison clarifies the relationship between constrained entropy production and GENERIC structure. Dissipation geometry is a constitutive assumption, while conservation constraints determine degeneracy directions. Linearisation reveals reversible structure irrespective of metric choice, although the existence of a global Poisson bracket remains contingent on additional symmetry, as discussed in the original paper.
+
+\section{Conclusion}
+
+Repeating the inaccessible game analysis under Fisher information geometry shows that the GENERIC-like decomposition is not a coordinate artefact of Euclidean dissipation. Constrained entropy ascent robustly generates reversible structure under both Euclidean and natural-gradient dynamics.
+
+The dissipation metric determines whether this structure appears canonical or emergent, but the constraint geometry determines whether it exists. Together, the two formulations clarify the respective roles of geometry and conservation in information-theoretic nonequilibrium dynamics.
+
+\paragraph{Relationship to the original paper.}
+This work is intended as a companion to \emph{The Inaccessible Game}. The Euclidean formulation highlights emergence; the Fisher formulation highlights invariance. Taken together, they show that constraint-induced reversibility is robust across dissipation geometries.
+
+\bibliographystyle{plainnat}
+\bibliography{the-inaccessible-game}
+
+\end{document}
+
