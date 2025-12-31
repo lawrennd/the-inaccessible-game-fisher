@@ -1,9 +1,9 @@
 # Conceptual Roadmap: Why a Fisher-Geometry Companion Paper?
 
 This repository accompanies the paper  
-**“Constraint-Induced Reversibility under Natural-Gradient Dynamics”**,  
+“Constraint-Induced Reversibility under Natural-Gradient Dynamics”,  
 which serves as a conceptual companion to  
-**“The Inaccessible Game”**.
+“The Inaccessible Game”.
 
 The purpose of this note is not to introduce new results, but to clarify
 *why* a second paper is needed, *what conceptual distinctions it isolates*,
@@ -18,8 +18,6 @@ The core message is simple:
 > *emergent* or *canonical*, not whether it exists.
 
 What follows explains that statement.
-
----
 
 ## 1. What the original paper does
 
@@ -44,8 +42,6 @@ In the original formulation:
 The antisymmetric component is *not postulated* — it emerges from
 constraint enforcement.
 
----
-
 ## 2. Why this raises a legitimate question
 
 Natural parameters are closely associated with *information geometry*.
@@ -61,8 +57,6 @@ If the answer were “no”, then the reversible structure could be dismissed as
 a coordinate or metric artefact.
 
 The companion paper exists to answer this question cleanly.
-
----
 
 ## 3. The key conceptual distinctions (often conflated)
 
@@ -94,8 +88,6 @@ frequently blurred:
 The original paper relies on these distinctions, but does not foreground them.
 The companion paper makes them explicit.
 
----
-
 ## 4. What the Fisher-geometry companion shows
 
 The companion paper repeats the inaccessible-game construction using:
@@ -124,8 +116,6 @@ What changes is *interpretation*:
 
 The metric controls *how the structure is attributed*, not *whether it exists*.
 
----
-
 ## 5. Why the Euclidean formulation is still essential
 
 The Fisher formulation is invariant, but it is not neutral.
@@ -149,8 +139,6 @@ The two papers therefore play complementary roles:
 
 Neither replaces the other.
 
----
-
 ## 6. How the quantum case fits
 
 In the matrix exponential family, a further distinction appears:
@@ -168,8 +156,6 @@ This explains why:
 - classical antisymmetry is parameter-dependent and fragile,
 - quantum antisymmetry is structural and stable.
 
----
-
 ## 7. How to read the papers
 
 *Recommended order:*
@@ -184,8 +170,6 @@ This explains why:
    — see how noncommutativity forces a genuine Hamiltonian sector.
 
 Each paper isolates a different logical layer of the same framework.
-
----
 
 ## 8. The takeaway
 
